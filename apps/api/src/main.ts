@@ -3,7 +3,12 @@
  * This is only a minimal backend to get started.
  */
 
-const db = [
+import express from 'express';
+import { Book } from './model/book';
+
+import cors from 'cors';
+
+const db: Book[] = [
   { id: 1, title: 'The Shining', author: 'Stephen King', pages: 447 },
   { id: 2, title: 'It', author: 'Stephen King', pages: 1138 },
   { id: 3, title: 'The Stand', author: 'Stephen King', pages: 823 },
@@ -36,15 +41,85 @@ const db = [
   { id: 15, title: 'Pride and Prejudice', author: 'Jane Austen', pages: 279 },
 ];
 
-import express from 'express';
-
 const app = express();
+app.use(express.json());
+app.use(cors({ origin: 'http://localhost:4200', credentials: true }));
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     Book:
+ *       type: object
+ *       required: [id, title, author, pages]
+ *       properties:
+ *         id:
+ *           type: integer
+ *           example: 1
+ *         title:
+ *           type: string
+ *           example: 'The Shining'
+ *         author:
+ *           type: string
+ *           example: 'Stephen King'
+ *         pages:
+ *           type: integer
+ *           example: 447
+ *     Error:
+ *       type: object
+ *       properties:
+ *         message:
+ *           type: string
+ */
 
+/**
+ * @openapi
+ * /books:
+ *   get:
+ *     operationId: getBooks
+ *     summary: List all books
+ *     tags: [Books]
+ *     responses:
+ *       200:
+ *         description: Array of books
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Book'
+ */
 app.get('/books', async (req, res) => {
   const books = db;
   return res.json(books);
 });
 
+/**
+ * @openapi
+ * /books/{id}:
+ *   get:
+ *     operationId: getBookById
+ *     summary: Get a single book by id
+ *     tags: [Books]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: The book
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Book'
+ *       404:
+ *         description: Not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 app.get('/books/:id', async (req, res) => {
   const { id } = req.params;
   const book = db.find((book) => book.id === parseInt(id));
@@ -55,12 +130,60 @@ app.get('/books/:id', async (req, res) => {
   }
 });
 
+/**
+ * @openapi
+ * /books:
+ *   post:
+ *     operationId: createBook
+ *     summary: Create a book
+ *     tags: [Books]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Book'
+ *     responses:
+ *       200:
+ *         description: The created book
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Book'
+ */
 app.post('/books', async (req, res) => {
   const book = req.body;
   db.push(book);
   return res.json(book);
 });
 
+/**
+ * @openapi
+ * /books/{id}:
+ *   delete:
+ *     operationId: deleteBook
+ *     summary: Delete a book by id
+ *     tags: [Books]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: The deleted book
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Book'
+ *       404:
+ *         description: Not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 app.delete('/books/:id', async (req, res) => {
   const { id } = req.params;
   const index = db.findIndex((book) => book.id === parseInt(id));
@@ -72,6 +195,39 @@ app.delete('/books/:id', async (req, res) => {
   }
 });
 
+/**
+ * @openapi
+ * /books/{id}:
+ *   put:
+ *     operationId: updateBook
+ *     summary: Replace a book by id
+ *     tags: [Books]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Book'
+ *     responses:
+ *       200:
+ *         description: The updated book
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Book'
+ *       404:
+ *         description: Not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 app.put('/books/:id', async (req, res) => {
   const { id } = req.params;
   const updatedBook = req.body;

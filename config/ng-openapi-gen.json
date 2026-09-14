@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/ng-openapi-gen/ng-openapi-gen-schema.json",
+  "input": "./schemas/openapi.yaml",
+  "output": "data-access",
+  "services": true,
+  "fileNameCase": "kebab",
+  "provideIn": "root",
+  "enumStyle": "enum",
+  "dateFormat": "Date"
+}

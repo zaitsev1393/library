@@ -13,7 +13,9 @@
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "paths": {}
+    "paths": {
+      "@data-access/books-service": ["./data-access/services/books.service.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
