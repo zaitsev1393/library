@@ -28,6 +28,10 @@ export default [
               sourceTag: 'scope:layout',
               onlyDependOnLibsWithTags: ['scope:shared', 'scope:shelf'],
             },
+            {
+              sourceTag: 'scope:shelf',
+              onlyDependOnLibsWithTags: ['scope:shared'],
+            },
           ],
         },
       ],
