@@ -14,7 +14,8 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
-      "@data-access/books-service": ["./data-access/services/books.service.ts"]
+      "@data-access/books-service": ["./data-access/services/books.service.ts"],
+      "@org/layout": ["./libs/layout/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
