@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'lib-shelf',
-  imports: [],
   templateUrl: './shelf.html',
-  styleUrl: './shelf.css',
+  imports: [RouterOutlet],
 })
 export class ShelfComponent {}
