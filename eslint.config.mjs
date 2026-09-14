@@ -24,6 +24,10 @@ export default [
               sourceTag: 'type:app',
               onlyDependOnLibsWithTags: ['type:lib'],
             },
+            {
+              sourceTag: 'scope:layout',
+              onlyDependOnLibsWithTags: ['scope:shared', 'scope:shelf'],
+            },
           ],
         },
       ],

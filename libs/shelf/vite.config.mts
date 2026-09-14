@@ -6,14 +6,14 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(() => ({
   root: import.meta.dirname,
-  cacheDir: '../../node_modules/.vite/libs/shared',
+  cacheDir: '../../node_modules/.vite/libs/shelf',
   plugins: [angular(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
   // Uncomment this if you are using workers.
   // worker: {
   //   plugins: () => [ nxViteTsPaths() ],
   // },
   test: {
-    name: 'shared',
+    name: 'shelf',
     watch: false,
     globals: true,
     environment: 'jsdom',
@@ -22,7 +22,7 @@ export default defineConfig(() => ({
     reporters: ['default'],
     passWithNoTests: true,
     coverage: {
-      reportsDirectory: '../../coverage/libs/shared',
+      reportsDirectory: '../../coverage/libs/shelf',
       provider: 'v8' as const,
     },
   },

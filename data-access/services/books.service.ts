@@ -3,7 +3,8 @@
 
 import { HttpClient, HttpContext } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
@@ -40,9 +41,9 @@ export class BooksService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  getBooks$Response(params?: GetBooks$Params, context?: HttpContext): Promise<StrictHttpResponse<Array<Book>>> {
+  getBooks$Response(params?: GetBooks$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<Book>>> {
     const obs = getBooks(this.http, this.rootUrl, params, context);
-    return firstValueFrom(obs);
+    return obs;
   }
 
   /**
@@ -55,9 +56,11 @@ export class BooksService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  getBooks(params?: GetBooks$Params, context?: HttpContext): Promise<Array<Book>> {
+  getBooks(params?: GetBooks$Params, context?: HttpContext): Observable<Array<Book>> {
     const resp = this.getBooks$Response(params, context);
-    return resp.then((r: StrictHttpResponse<Array<Book>>): Array<Book> => r.body);
+    return resp.pipe(
+      map((r: StrictHttpResponse<Array<Book>>): Array<Book> => r.body)
+    );
   }
 
   /** Path part for operation `createBook()` */
@@ -73,9 +76,9 @@ export class BooksService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  createBook$Response(params: CreateBook$Params, context?: HttpContext): Promise<StrictHttpResponse<Book>> {
+  createBook$Response(params: CreateBook$Params, context?: HttpContext): Observable<StrictHttpResponse<Book>> {
     const obs = createBook(this.http, this.rootUrl, params, context);
-    return firstValueFrom(obs);
+    return obs;
   }
 
   /**
@@ -88,9 +91,11 @@ export class BooksService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  createBook(params: CreateBook$Params, context?: HttpContext): Promise<Book> {
+  createBook(params: CreateBook$Params, context?: HttpContext): Observable<Book> {
     const resp = this.createBook$Response(params, context);
-    return resp.then((r: StrictHttpResponse<Book>): Book => r.body);
+    return resp.pipe(
+      map((r: StrictHttpResponse<Book>): Book => r.body)
+    );
   }
 
   /** Path part for operation `getBookById()` */
@@ -106,9 +111,9 @@ export class BooksService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  getBookById$Response(params: GetBookById$Params, context?: HttpContext): Promise<StrictHttpResponse<Book>> {
+  getBookById$Response(params: GetBookById$Params, context?: HttpContext): Observable<StrictHttpResponse<Book>> {
     const obs = getBookById(this.http, this.rootUrl, params, context);
-    return firstValueFrom(obs);
+    return obs;
   }
 
   /**
@@ -121,9 +126,11 @@ export class BooksService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  getBookById(params: GetBookById$Params, context?: HttpContext): Promise<Book> {
+  getBookById(params: GetBookById$Params, context?: HttpContext): Observable<Book> {
     const resp = this.getBookById$Response(params, context);
-    return resp.then((r: StrictHttpResponse<Book>): Book => r.body);
+    return resp.pipe(
+      map((r: StrictHttpResponse<Book>): Book => r.body)
+    );
   }
 
   /** Path part for operation `updateBook()` */
@@ -139,9 +146,9 @@ export class BooksService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  updateBook$Response(params: UpdateBook$Params, context?: HttpContext): Promise<StrictHttpResponse<Book>> {
+  updateBook$Response(params: UpdateBook$Params, context?: HttpContext): Observable<StrictHttpResponse<Book>> {
     const obs = updateBook(this.http, this.rootUrl, params, context);
-    return firstValueFrom(obs);
+    return obs;
   }
 
   /**
@@ -154,9 +161,11 @@ export class BooksService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  updateBook(params: UpdateBook$Params, context?: HttpContext): Promise<Book> {
+  updateBook(params: UpdateBook$Params, context?: HttpContext): Observable<Book> {
     const resp = this.updateBook$Response(params, context);
-    return resp.then((r: StrictHttpResponse<Book>): Book => r.body);
+    return resp.pipe(
+      map((r: StrictHttpResponse<Book>): Book => r.body)
+    );
   }
 
   /** Path part for operation `deleteBook()` */
@@ -172,9 +181,9 @@ export class BooksService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  deleteBook$Response(params: DeleteBook$Params, context?: HttpContext): Promise<StrictHttpResponse<Book>> {
+  deleteBook$Response(params: DeleteBook$Params, context?: HttpContext): Observable<StrictHttpResponse<Book>> {
     const obs = deleteBook(this.http, this.rootUrl, params, context);
-    return firstValueFrom(obs);
+    return obs;
   }
 
   /**
@@ -187,9 +196,11 @@ export class BooksService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  deleteBook(params: DeleteBook$Params, context?: HttpContext): Promise<Book> {
+  deleteBook(params: DeleteBook$Params, context?: HttpContext): Observable<Book> {
     const resp = this.deleteBook$Response(params, context);
-    return resp.then((r: StrictHttpResponse<Book>): Book => r.body);
+    return resp.pipe(
+      map((r: StrictHttpResponse<Book>): Book => r.body)
+    );
   }
 
 }

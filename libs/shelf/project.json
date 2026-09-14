@@ -1,10 +1,10 @@
 {
-  "name": "shared",
+  "name": "shelf",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/shared/src",
+  "sourceRoot": "libs/shelf/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": ["type:lib", "scope:shared"],
+  "tags": ["type:lib", "scope:shelf"],
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint"

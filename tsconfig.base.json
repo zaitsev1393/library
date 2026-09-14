@@ -16,7 +16,8 @@
     "paths": {
       "@data-access/books-service": ["./data-access/services/books.service.ts"],
       "@org/layout": ["./libs/layout/src/index.ts"],
-      "@org/shared": ["./libs/shared/src/index.ts"]
+      "@org/shared": ["./libs/shared/src/index.ts"],
+      "@org/shelf": ["./libs/shelf/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

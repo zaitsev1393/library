@@ -1,0 +1,13 @@
+<div class="flex flex-col gap-4 items-center justify-center text-center">
+  <div class="text-xl">Your shelf is empty...</div>
+
+  <img
+    class="h-auto max-w-96 rounded-base invert"
+    src="./assets/empty-shelf.png"
+    alt="Empty shelf"
+  />
+  <div class="flex gap-2">
+    <lib-button color="brand" (click)="addBook()">Add Book</lib-button>
+    <lib-button color="brand" (click)="exportXML()">Export XML</lib-button>
+  </div>
+</div>

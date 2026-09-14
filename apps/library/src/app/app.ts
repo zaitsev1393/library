@@ -1,6 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { BooksService } from '@data-access/books-service';
 
 @Component({
   imports: [RouterModule],
@@ -8,12 +7,4 @@ import { BooksService } from '@data-access/books-service';
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App implements OnInit {
-  private readonly booksService = inject(BooksService);
-
-  ngOnInit() {
-    this.booksService.getBooks().then((books) => {
-      console.log('Books:', books);
-    });
-  }
-}
+export class App {}

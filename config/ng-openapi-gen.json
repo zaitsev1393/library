@@ -6,5 +6,6 @@
   "fileNameCase": "kebab",
   "provideIn": "root",
   "enumStyle": "enum",
-  "dateFormat": "Date"
+  "dateFormat": "Date",
+  "promises": false
 }

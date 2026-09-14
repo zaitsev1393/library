@@ -1,0 +1,13 @@
+<button
+  type="button"
+  class="text-white bg-{{
+    color()
+  }} box-border border border-transparent hover:bg-{{
+    color()
+  }}-strong focus:ring-4 focus:ring-{{
+    color()
+  }}-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+  (click)="clicked.emit()"
+>
+  <ng-content />
+</button>
