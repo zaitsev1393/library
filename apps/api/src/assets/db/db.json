@@ -1,0 +1,29 @@
+[
+  { "title": "The Shining", "author": "Stephen King", "pages": 447 },
+  { "title": "It", "author": "Stephen King", "pages": 1138 },
+  { "title": "The Stand", "author": "Stephen King", "pages": 823 },
+  {
+    "title": "Do Androids Dream of Electric Sheep?",
+    "author": "Philip K. Dick",
+    "pages": 210
+  },
+  {
+    "title": "The Man in the High Castle",
+    "author": "Philip K. Dick",
+    "pages": 259
+  },
+  { "title": "Ubik", "author": "Philip K. Dick", "pages": 224 },
+  { "title": "1984", "author": "George Orwell", "pages": 328 },
+  { "title": "Animal Farm", "author": "George Orwell", "pages": 112 },
+  { "title": "Dune", "author": "Frank Herbert", "pages": 412 },
+  { "title": "The Hobbit", "author": "J.R.R. Tolkien", "pages": 310 },
+  { "title": "Brave New World", "author": "Aldous Huxley", "pages": 311 },
+  { "title": "Fahrenheit 451", "author": "Ray Bradbury", "pages": 194 },
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "pages": 180
+  },
+  { "title": "To Kill a Mockingbird", "author": "Harper Lee", "pages": 281 },
+  { "title": "Pride and Prejudice", "author": "Jane Austen", "pages": 279 }
+]
