@@ -1,5 +1,6 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { Component, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 
 @Component({
@@ -11,7 +12,7 @@ export class DialogComponent {}
   selector: 'lib-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
-  imports: [HeaderComponent],
+  imports: [HeaderComponent, RouterOutlet],
 })
 export class LayoutComponent {
   private dialog = inject(Dialog);
