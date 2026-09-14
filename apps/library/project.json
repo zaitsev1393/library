@@ -56,6 +56,10 @@
         "development": {
           "buildTarget": "library:build:development"
         }
+      },
+      "dependsOn": ["api:serve"],
+      "options": {
+        "proxyConfig": "apps/library/proxy.conf.json"
       }
     },
     "lint": {
