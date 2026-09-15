@@ -1,7 +1,6 @@
 .grid-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto;
-  min-height: 200px;
+  grid-auto-rows: minmax(200px, auto);
   gap: 16px;
 }

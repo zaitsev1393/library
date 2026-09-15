@@ -2,5 +2,6 @@
 @source "./../../../node_modules/flowbite";
 
 html {
+  background: var(--color-paper-dim);
   scrollbar-gutter: stable;
 }

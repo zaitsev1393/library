@@ -1,0 +1,6 @@
+@reference 'tailwindcss';
+
+.book-card {
+  @apply w-full h-full rounded-sm hover:cursor-pointer duration-200 hover:scale-105;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}

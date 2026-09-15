@@ -8,7 +8,6 @@ import {
   signal,
 } from '@angular/core';
 import { form, FormField, min, required } from '@angular/forms/signals';
-import { ButtonComponent } from '@org/shared';
 
 export interface BookData {
   id?: number;
@@ -21,7 +20,7 @@ export interface BookData {
   selector: 'lib-book-form',
   templateUrl: './book-form.component.html',
   styleUrls: ['./book-form.component.scss'],
-  imports: [FormField, ButtonComponent],
+  imports: [FormField],
 })
 export class BookFormComponent {
   private readonly dialogRef = inject(DialogRef);
