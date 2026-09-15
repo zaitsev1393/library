@@ -96,9 +96,45 @@
             <td class="px-6 py-4">{{ book.author }}</td>
             <td class="px-6 py-4">{{ book.pages }}</td>
             <td class="px-6 py-4 text-right">
-              <a href="#" class="font-medium text-fg-brand hover:underline"
-                >Edit</a
+              <button
+                [cdkMenuTriggerFor]="menu"
+                href="#"
+                class="font-medium text-fg-brand hover:underline"
               >
+                ...
+              </button>
+              <ng-template #menu>
+                <div
+                  id="dropdown"
+                  cdkMenu
+                  class="z-10 bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44"
+                >
+                  <ul class="p-2 text-sm text-body font-medium">
+                    <li>
+                      <div
+                        role="button"
+                        tabindex="0"
+                        class="hover:cursor-pointer inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
+                        (click)="editBook(book)"
+                        (keydown.enter)="editBook(book)"
+                      >
+                        Edit
+                      </div>
+                    </li>
+                    <li>
+                      <div
+                        role="button"
+                        tabindex="0"
+                        class="hover:cursor-pointer inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded text-red-600"
+                        (click)="deleteBook(book)"
+                        (keydown.enter)="deleteBook(book)"
+                      >
+                        Delete
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </ng-template>
             </td>
           </tr>
         }
