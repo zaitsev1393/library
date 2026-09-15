@@ -1,5 +1,6 @@
 import { CdkMenu, CdkMenuTrigger } from '@angular/cdk/menu';
 import { Component, inject } from '@angular/core';
+import { Book } from '@data-access';
 import { ShelfStore } from '../shelf.store';
 
 @Component({
@@ -13,11 +14,11 @@ export class ListComponent {
   public readonly books = this.shelfStore.books;
   public readonly filteredBooks = this.shelfStore.filteredBooks;
 
-  editBook(book: any) {
+  editBook(book: Book) {
     this.shelfStore.editBook(book);
   }
 
-  deleteBook(book: any) {
+  deleteBook(book: Book) {
     this.shelfStore.deleteBook(book);
   }
 }

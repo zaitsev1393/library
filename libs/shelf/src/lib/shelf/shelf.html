@@ -40,7 +40,17 @@
   </div>
   <div class="flex gap-2">
     <lib-button (click)="addBook()">Add book</lib-button>
-    <lib-button (click)="importBooks('xml')">Import XML</lib-button>
+    <lib-button>
+      <label for="fileUpload" class="file-button">Import XML</label>
+      <input
+        id="fileUpload"
+        type="file"
+        class="hidden"
+        [accept]="ACCEPTED_FORMATS"
+        (change)="onFileSelected($event)"
+      />
+    </lib-button>
+    <lib-button (click)="downloadLibrary()">D</lib-button>
   </div>
 </div>
 <div class="mt-4">

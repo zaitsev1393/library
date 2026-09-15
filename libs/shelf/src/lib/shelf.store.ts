@@ -1,15 +1,24 @@
 import { computed, inject, Injectable, Injector, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { Book, BooksService } from '@data-access';
-import { DialogService } from '@org/shared';
+import { DialogService, DownloadService, XmlParserService } from '@org/shared';
 import { LibAddBookComponent } from './manage-book/add-book/add-book.component';
 import { LibEditBookComponent } from './manage-book/edit-book/edit-book.component';
+
+const removeIds = (books: Book[]) =>
+  books.map(({ author, title, pages }) => ({
+    author,
+    title,
+    pages,
+  }));
 
 @Injectable()
 export class ShelfStore {
   private readonly booksService = inject(BooksService);
   private readonly dialogService = inject(DialogService);
   private readonly injector = inject(Injector);
+  private readonly xmlParserService = inject(XmlParserService);
+  private readonly downloadService = inject(DownloadService);
 
   public search = signal<string>('');
 
@@ -45,5 +54,16 @@ export class ShelfStore {
     this.booksService.deleteBook({ id }).subscribe(() => {
       this.books.reload();
     });
+  }
+
+  public addParsedBooks(books: Book[]) {
+    this.books.update((currentBooks) => [...(currentBooks || []), ...books]);
+  }
+
+  public downloadLibrary() {
+    const libraryXML = this.xmlParserService.jsonToXML({
+      library: { book: removeIds(this.books.value() || []) },
+    });
+    this.downloadService.downloadXML(libraryXML);
   }
 }
