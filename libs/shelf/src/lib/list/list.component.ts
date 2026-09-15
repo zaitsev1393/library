@@ -1,6 +1,7 @@
 import { CdkMenu, CdkMenuTrigger } from '@angular/cdk/menu';
 import { Component, inject } from '@angular/core';
 import { Book } from '@data-access';
+import { NgIcon } from '@ng-icons/core';
 import { ShelfStore } from '../shelf.store';
 
 export type SortOrder = {
@@ -13,7 +14,7 @@ export type SortOrder = {
   selector: 'lib-list-view',
   templateUrl: 'list.component.html',
   styleUrls: ['list.component.scss'],
-  imports: [CdkMenuTrigger, CdkMenu],
+  imports: [CdkMenuTrigger, CdkMenu, NgIcon],
 })
 export class ListComponent {
   private readonly shelfStore = inject(ShelfStore);

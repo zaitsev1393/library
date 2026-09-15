@@ -19,6 +19,8 @@
     "@angular/platform-server": "22.1.4",
     "@angular/router": "22.1.4",
     "@angular/ssr": "22.1.6",
+    "@ng-icons/core": "^36.0.0",
+    "@ng-icons/heroicons": "^36.0.0",
     "@tailwindcss/postcss": "^4.3.3",
     "axios": "^1.6.0",
     "cors": "^2.8.6",

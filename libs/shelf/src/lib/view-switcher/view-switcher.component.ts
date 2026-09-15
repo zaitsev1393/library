@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { ButtonComponent } from '@org/shared';
+import { NgIcon } from '@ng-icons/core';
+import { ButtonComponent, IconButtonComponent } from '@org/shared';
 
 export enum ViewType {
   List = 'list',
@@ -11,11 +12,16 @@ export enum ViewType {
   selector: 'lib-view-switcher',
   template: `
     <div class="flex gap-1">
-      <lib-button (click)="switchView(ViewType.List)">List</lib-button>
-      <lib-button (click)="switchView(ViewType.Grid)">Grid</lib-button>
+      <lib-icon-button
+        name="heroTableCells"
+        (click)="switchView(ViewType.List)"
+      >
+      </lib-icon-button>
+      <lib-icon-button name="heroQueueList" (click)="switchView(ViewType.Grid)">
+      </lib-icon-button>
     </div>
   `,
-  imports: [ButtonComponent],
+  imports: [ButtonComponent, IconButtonComponent, NgIcon],
 })
 export class ViewSwitcherComponent {
   private readonly router = inject(Router);

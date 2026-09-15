@@ -1,1 +1,5 @@
-Grid view
+<div class="grid-container">
+  @for (book of books(); track book.id) {
+    <lib-book-card [book]="book"></lib-book-card>
+  }
+</div>

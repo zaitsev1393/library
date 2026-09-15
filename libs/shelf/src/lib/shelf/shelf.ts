@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { NgIcon } from '@ng-icons/core';
 import {
   ButtonComponent,
   DownloadService,
@@ -11,7 +12,7 @@ import { ViewSwitcherComponent } from '../view-switcher/view-switcher.component'
 @Component({
   selector: 'lib-shelf',
   templateUrl: './shelf.html',
-  imports: [RouterOutlet, ViewSwitcherComponent, ButtonComponent],
+  imports: [RouterOutlet, ViewSwitcherComponent, ButtonComponent, NgIcon],
   providers: [ShelfStore, XmlParserService, DownloadService],
 })
 export class ShelfComponent {
