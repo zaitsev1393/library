@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 type ButtonColor =
   | 'brand'
@@ -16,5 +16,4 @@ type ButtonColor =
 })
 export class ButtonComponent {
   color = input<ButtonColor>('brand');
-  clicked = output<void>();
 }

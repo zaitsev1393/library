@@ -30,9 +30,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Book'
+              $ref: '#/components/schemas/CreateBook'
       responses:
-        '200':
+        '201':
           description: The created book
           content:
             application/json:
@@ -122,7 +122,6 @@ components:
     Book:
       type: object
       required:
-        - id
         - title
         - author
         - pages
@@ -130,6 +129,22 @@ components:
         id:
           type: integer
           example: 1
+        title:
+          type: string
+          example: The Shining
+        author:
+          type: string
+          example: Stephen King
+        pages:
+          type: integer
+          example: 447
+    CreateBook:
+      type: object
+      required:
+        - title
+        - author
+        - pages
+      properties:
         title:
           type: string
           example: The Shining

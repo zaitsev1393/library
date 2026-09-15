@@ -1,0 +1,65 @@
+<form>
+  <div class="flex flex-col gap-2">
+    <div>
+      <label for="title" class="block text-sm font-medium text-heading"
+        >Title</label
+      >
+      <input
+        type="text"
+        id="title"
+        class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+        placeholder="The Great Gatsby"
+        [formField]="bookForm.title"
+      />
+      @if (bookForm.title().touched() && bookForm.title().invalid()) {
+        <ul class="error-list">
+          @for (error of bookForm.title().errors(); track error) {
+            <li>{{ error.message }}</li>
+          }
+        </ul>
+      }
+    </div>
+    <div>
+      <label for="author" class="block text-sm font-medium text-heading"
+        >Author</label
+      >
+      <input
+        type="text"
+        id="author"
+        class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+        placeholder="F. Scott Fitzgerald"
+        [formField]="bookForm.author"
+      />
+      @if (bookForm.author().touched() && bookForm.author().invalid()) {
+        <ul class="error-list">
+          @for (error of bookForm.author().errors(); track error) {
+            <li>{{ error.message }}</li>
+          }
+        </ul>
+      }
+    </div>
+    <div>
+      <label for="pages" class="block text-sm font-medium text-heading"
+        >Pages</label
+      >
+      <input
+        type="number"
+        id="pages"
+        class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+        placeholder="180"
+        [formField]="bookForm.pages"
+      />
+      @if (bookForm.pages().touched() && bookForm.pages().invalid()) {
+        <ul class="error-list">
+          @for (error of bookForm.pages().errors(); track error) {
+            <li>{{ error.message }}</li>
+          }
+        </ul>
+      }
+    </div>
+  </div>
+  <div class="flex justify-end mt-4 gap-2">
+    <lib-button (click)="cancel()">Cancel</lib-button>
+    <lib-button (click)="onSubmit()">Add</lib-button>
+  </div>
+</form>

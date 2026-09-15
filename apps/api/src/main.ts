@@ -4,7 +4,7 @@
  */
 
 import express from 'express';
-import { Book } from './model/book';
+import { Book, CreateBook } from './model/book';
 
 import cors from 'cors';
 
@@ -41,6 +41,9 @@ const db: Book[] = [
   { id: 15, title: 'Pride and Prejudice', author: 'Jane Austen', pages: 279 },
 ];
 
+const nextId = (els = db) =>
+  els.length > 0 ? Math.max(...els.map((el) => el.id ?? 0)) + 1 : 1;
+
 const app = express();
 app.use(express.json());
 app.use(cors({ origin: 'http://localhost:4200', credentials: true }));
@@ -50,11 +53,24 @@ app.use(cors({ origin: 'http://localhost:4200', credentials: true }));
  *   schemas:
  *     Book:
  *       type: object
- *       required: [id, title, author, pages]
+ *       required: [title, author, pages]
  *       properties:
  *         id:
  *           type: integer
  *           example: 1
+ *         title:
+ *           type: string
+ *           example: 'The Shining'
+ *         author:
+ *           type: string
+ *           example: 'Stephen King'
+ *         pages:
+ *           type: integer
+ *           example: 447
+ *     CreateBook:
+ *       type: object
+ *       required: [title, author, pages]
+ *       properties:
  *         title:
  *           type: string
  *           example: 'The Shining'
@@ -142,9 +158,9 @@ app.get('/books/:id', async (req, res) => {
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/Book'
+ *             $ref: '#/components/schemas/CreateBook'
  *     responses:
- *       200:
+ *       201:
  *         description: The created book
  *         content:
  *           application/json:
@@ -152,9 +168,10 @@ app.get('/books/:id', async (req, res) => {
  *               $ref: '#/components/schemas/Book'
  */
 app.post('/books', async (req, res) => {
-  const book = req.body;
+  const input: CreateBook = req.body;
+  const book: Book = { id: nextId(), ...input };
   db.push(book);
-  return res.json(book);
+  return res.status(201).json(book);
 });
 
 /**

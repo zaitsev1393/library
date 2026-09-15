@@ -5,9 +5,10 @@ import { inject, Service } from '@angular/core';
 @Service()
 export class DialogService {
   private readonly dialog = inject(Dialog);
-  public openDialog<T>(component: ComponentType<T>) {
+  public openDialog<T>(component: ComponentType<T>, options: any) {
     return this.dialog.open(component, {
       panelClass: 'lib-dialog-base',
+      ...options,
     });
   }
 }

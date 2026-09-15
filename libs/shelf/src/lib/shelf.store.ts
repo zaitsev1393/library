@@ -1,4 +1,4 @@
-import { computed, inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, Injector, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { Book, BooksService } from '@data-access';
 import { DialogService } from '@org/shared';
@@ -8,6 +8,7 @@ import { LibAddBookComponent } from './manage-book/add-book/add-book.component';
 export class ShelfStore {
   private readonly booksService = inject(BooksService);
   private readonly dialogService = inject(DialogService);
+  private readonly injector = inject(Injector);
 
   public search = signal<string>('');
 
@@ -25,6 +26,8 @@ export class ShelfStore {
   });
 
   public addBook() {
-    this.dialogService.openDialog(LibAddBookComponent);
+    this.dialogService.openDialog(LibAddBookComponent, {
+      injector: this.injector,
+    });
   }
 }

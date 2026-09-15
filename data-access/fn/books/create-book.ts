@@ -8,9 +8,10 @@ import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
 import { Book } from '../../models/book';
+import { CreateBook } from '../../models/create-book';
 
 export interface CreateBook$Params {
-      body: Book
+      body: CreateBook
 }
 
 export function createBook(http: HttpClient, rootUrl: string, params: CreateBook$Params, context?: HttpContext): Observable<StrictHttpResponse<Book>> {

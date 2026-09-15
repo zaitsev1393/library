@@ -7,6 +7,7 @@ export type { StrictHttpResponse } from './strict-http-response';
 export { Api } from './api';
 
 export type { Book } from './models/book';
+export type { CreateBook } from './models/create-book';
 export type { Error } from './models/error';
 export { BaseService } from './base-service';
 export { BooksService } from './services/books.service';
