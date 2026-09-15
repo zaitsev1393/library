@@ -20,7 +20,10 @@
             "input": "apps/library/public"
           }
         ],
-        "styles": ["apps/library/src/styles.css"]
+        "styles": [
+          "apps/library/src/styles.css",
+          "libs/shared/src/lib/styles/base.scss"
+        ]
       },
       "configurations": {
         "production": {

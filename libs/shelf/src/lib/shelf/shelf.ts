@@ -14,7 +14,7 @@ export class ShelfComponent {
   public readonly shelfStore = inject(ShelfStore);
 
   addBook(): void {
-    console.log('Add book');
+    this.shelfStore.addBook();
   }
 
   importBooks(type: string): void {
