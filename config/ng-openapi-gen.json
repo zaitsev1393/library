@@ -2,6 +2,7 @@
   "$schema": "node_modules/ng-openapi-gen/ng-openapi-gen-schema.json",
   "input": "./schemas/openapi.yaml",
   "output": "data-access",
+  "indexFile": "true",
   "services": true,
   "fileNameCase": "kebab",
   "provideIn": "root",

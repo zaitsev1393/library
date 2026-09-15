@@ -14,7 +14,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
-      "@data-access/books-service": ["./data-access/services/books.service.ts"],
+      "@data-access": ["./data-access"],
       "@org/layout": ["./libs/layout/src/index.ts"],
       "@org/shared": ["./libs/shared/src/index.ts"],
       "@org/shelf": ["./libs/shelf/src/index.ts"]
