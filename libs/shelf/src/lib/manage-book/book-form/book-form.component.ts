@@ -53,6 +53,8 @@ export class BookFormComponent {
   });
 
   onSubmit(): void {
+    if (this.bookForm().invalid()) return;
+
     const bookData = this.bookModel();
     this.submitted.emit(bookData);
   }

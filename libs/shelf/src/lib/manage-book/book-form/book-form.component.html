@@ -49,7 +49,10 @@
         placeholder="180"
         [formField]="bookForm.pages"
       />
-      @if (bookForm.pages().touched() && bookForm.pages().invalid()) {
+      @if (
+        (bookForm.pages().touched() && bookForm.pages().invalid()) ||
+        bookForm().invalid()
+      ) {
         <ul class="error-list">
           @for (error of bookForm.pages().errors(); track error) {
             <li>{{ error.message }}</li>

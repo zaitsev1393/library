@@ -1,7 +1,12 @@
 import { computed, inject, Injectable, Injector, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { Book, BooksService } from '@data-access';
-import { DialogService, DownloadService, XmlParserService } from '@org/shared';
+import {
+  DialogService,
+  DownloadService,
+  NotificationsService,
+  XmlParserService,
+} from '@org/shared';
 import { LibAddBookComponent } from './manage-book/add-book/add-book.component';
 import { LibEditBookComponent } from './manage-book/edit-book/edit-book.component';
 
@@ -19,6 +24,7 @@ export class ShelfStore {
   private readonly injector = inject(Injector);
   private readonly xmlParserService = inject(XmlParserService);
   private readonly downloadService = inject(DownloadService);
+  private readonly notificationsService = inject(NotificationsService);
 
   public search = signal<string>('');
 
@@ -36,16 +42,32 @@ export class ShelfStore {
   });
 
   public addBook() {
-    this.dialogService.openDialog(LibAddBookComponent, {
-      injector: this.injector,
-    });
+    this.dialogService
+      .openDialog(LibAddBookComponent, {
+        injector: this.injector,
+      })
+      .closed.pipe()
+      .subscribe(() => {
+        this.notificationsService.showNotification({
+          message: 'Book added successfully',
+          type: 'success',
+        });
+      });
   }
 
   public editBook(book: Book) {
-    this.dialogService.openDialog(LibEditBookComponent, {
-      injector: this.injector,
-      data: { book },
-    });
+    this.dialogService
+      .openDialog(LibEditBookComponent, {
+        injector: this.injector,
+        data: { book },
+      })
+      .closed.pipe()
+      .subscribe(() => {
+        this.notificationsService.showNotification({
+          message: 'Book edited successfully',
+          type: 'success',
+        });
+      });
   }
 
   public deleteBook({ id }: Book) {
@@ -53,11 +75,19 @@ export class ShelfStore {
 
     this.booksService.deleteBook({ id }).subscribe(() => {
       this.books.reload();
+      this.notificationsService.showNotification({
+        message: 'Book deleted successfully',
+        type: 'success',
+      });
     });
   }
 
   public addParsedBooks(books: Book[]) {
     this.books.update((currentBooks) => [...(currentBooks || []), ...books]);
+    this.notificationsService.showNotification({
+      message: 'Books added successfully',
+      type: 'success',
+    });
   }
 
   public downloadLibrary() {

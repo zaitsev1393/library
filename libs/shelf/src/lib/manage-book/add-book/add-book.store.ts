@@ -1,3 +1,4 @@
+import { DialogRef } from '@angular/cdk/dialog';
 import { inject, Injectable } from '@angular/core';
 import { BooksService, CreateBook } from '@data-access';
 import { ShelfStore } from '../../shelf.store';
@@ -7,14 +8,17 @@ import { BookData } from '../book-form/book-form.component';
 export class AddBookStore {
   private readonly booksService = inject(BooksService);
   private readonly shelfStore = inject(ShelfStore);
+  private readonly dialogRef = inject(DialogRef);
   public createBook({ title, author, pages }: BookData) {
     const body: CreateBook = {
       title,
       author,
       pages,
     };
+
     this.booksService.createBook({ body }).subscribe(() => {
       this.shelfStore.books.reload();
+      this.dialogRef.close();
     });
   }
 }
