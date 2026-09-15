@@ -38,4 +38,12 @@ export class ShelfStore {
       data: { book },
     });
   }
+
+  public deleteBook({ id }: Book) {
+    if (!id) return;
+
+    this.booksService.deleteBook({ id }).subscribe(() => {
+      this.books.reload();
+    });
+  }
 }

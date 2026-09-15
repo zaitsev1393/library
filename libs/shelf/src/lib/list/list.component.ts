@@ -18,7 +18,6 @@ export class ListComponent {
   }
 
   deleteBook(book: any) {
-    console.log(book);
-    // this.shelfStore.deleteBook(book);
+    this.shelfStore.deleteBook(book);
   }
 }
