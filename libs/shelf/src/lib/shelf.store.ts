@@ -47,7 +47,9 @@ export class ShelfStore {
         injector: this.injector,
       })
       .closed.pipe()
-      .subscribe(() => {
+      .subscribe((success) => {
+        if (!success) return;
+
         this.notificationsService.showNotification({
           message: 'Book added successfully',
           type: 'success',
@@ -62,7 +64,9 @@ export class ShelfStore {
         data: { book },
       })
       .closed.pipe()
-      .subscribe(() => {
+      .subscribe((success) => {
+        if (!success) return;
+
         this.notificationsService.showNotification({
           message: 'Book edited successfully',
           type: 'success',
@@ -95,5 +99,39 @@ export class ShelfStore {
       library: { book: removeIds(this.books.value() || []) },
     });
     this.downloadService.downloadXML(libraryXML);
+  }
+
+  public sortByTitle({ order }: { order: 'asc' | 'desc' }) {
+    this.books.update((currentBooks) =>
+      (currentBooks || [])
+        .slice()
+        .sort((a, b) =>
+          order === 'asc'
+            ? a.title.localeCompare(b.title)
+            : b.title.localeCompare(a.title),
+        ),
+    );
+  }
+
+  public sortByAuthor({ order }: { order: 'asc' | 'desc' }) {
+    this.books.update((currentBooks) =>
+      (currentBooks || [])
+        .slice()
+        .sort((a, b) =>
+          order === 'asc'
+            ? a.author.localeCompare(b.author)
+            : b.author.localeCompare(a.author),
+        ),
+    );
+  }
+
+  public sortByPages({ order }: { order: 'asc' | 'desc' }) {
+    this.books.update((currentBooks) =>
+      (currentBooks || [])
+        .slice()
+        .sort((a, b) =>
+          order === 'asc' ? a.pages - b.pages : b.pages - a.pages,
+        ),
+    );
   }
 }

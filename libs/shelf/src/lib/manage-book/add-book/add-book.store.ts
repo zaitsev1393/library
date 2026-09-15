@@ -18,7 +18,7 @@ export class AddBookStore {
 
     this.booksService.createBook({ body }).subscribe(() => {
       this.shelfStore.books.reload();
-      this.dialogRef.close();
+      this.dialogRef.close(true);
     });
   }
 }

@@ -37,7 +37,7 @@ export class BookFormComponent {
     });
   }
 
-  private bookModel = signal<BookData>({
+  public bookModel = signal<BookData>({
     id: undefined,
     title: '',
     author: '',
@@ -60,6 +60,6 @@ export class BookFormComponent {
   }
 
   cancel(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(false);
   }
 }

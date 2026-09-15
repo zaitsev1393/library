@@ -1,2 +1,6 @@
 <div>Add Book</div>
-<lib-book-form (submitted)="createBook($event)" />
+<lib-book-form #formComponent />
+<div class="flex justify-end mt-4 gap-2">
+  <lib-button (click)="cancel()">Cancel</lib-button>
+  <lib-button (click)="addBook(formComponent.book())">Add</lib-button>
+</div>

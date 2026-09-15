@@ -10,7 +10,7 @@
           <th scope="col" class="px-6 py-3 font-medium">
             <div class="flex items-center">
               Title
-              <a href="#">
+              <button class="hover:cursor-pointer" (click)="sortByTitle()">
                 <svg
                   class="w-4 h-4 ms-1"
                   aria-hidden="true"
@@ -28,13 +28,13 @@
                     d="m8 15 4 4 4-4m0-6-4-4-4 4"
                   />
                 </svg>
-              </a>
+              </button>
             </div>
           </th>
           <th scope="col" class="px-6 py-3 font-medium">
             <div class="flex items-center">
               Author
-              <a href="#">
+              <button class="hover:cursor-pointer" (click)="sortByAuthor()">
                 <svg
                   class="w-4 h-4 ms-1"
                   aria-hidden="true"
@@ -52,13 +52,13 @@
                     d="m8 15 4 4 4-4m0-6-4-4-4 4"
                   />
                 </svg>
-              </a>
+              </button>
             </div>
           </th>
           <th scope="col" class="px-6 py-3 font-medium">
             <div class="flex items-center">
               Pages
-              <a href="#">
+              <button class="hover:cursor-pointer" (click)="sortByPages()">
                 <svg
                   class="w-4 h-4 ms-1"
                   aria-hidden="true"
@@ -76,7 +76,7 @@
                     d="m8 15 4 4 4-4m0-6-4-4-4 4"
                   />
                 </svg>
-              </a>
+              </button>
             </div>
           </th>
           <th scope="col" class="px-6 py-3 font-medium">

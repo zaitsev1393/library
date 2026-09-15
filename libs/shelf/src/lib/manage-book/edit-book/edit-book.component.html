@@ -1,2 +1,6 @@
 <div>Edit Book</div>
-<lib-book-form [book]="book" (submitted)="editBook($event)" />
+<lib-book-form [book]="book" #formComponent />
+<div class="flex justify-end mt-4 gap-2">
+  <lib-button (click)="cancel()">Cancel</lib-button>
+  <lib-button (click)="editBook(formComponent.book())">Edit</lib-button>
+</div>
