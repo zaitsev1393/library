@@ -11,6 +11,7 @@ import { form, FormField, min, required } from '@angular/forms/signals';
 import { ButtonComponent } from '@org/shared';
 
 export interface BookData {
+  id?: number;
   title: string;
   author: string;
   pages: number;
@@ -37,6 +38,7 @@ export class BookFormComponent {
   }
 
   private bookModel = signal<BookData>({
+    id: undefined,
     title: '',
     author: '',
     pages: 0,

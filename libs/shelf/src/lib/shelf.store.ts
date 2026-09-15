@@ -3,6 +3,7 @@ import { rxResource } from '@angular/core/rxjs-interop';
 import { Book, BooksService } from '@data-access';
 import { DialogService } from '@org/shared';
 import { LibAddBookComponent } from './manage-book/add-book/add-book.component';
+import { LibEditBookComponent } from './manage-book/edit-book/edit-book.component';
 
 @Injectable()
 export class ShelfStore {
@@ -28,6 +29,13 @@ export class ShelfStore {
   public addBook() {
     this.dialogService.openDialog(LibAddBookComponent, {
       injector: this.injector,
+    });
+  }
+
+  public editBook(book: Book) {
+    this.dialogService.openDialog(LibEditBookComponent, {
+      injector: this.injector,
+      data: { book },
     });
   }
 }
