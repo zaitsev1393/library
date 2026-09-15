@@ -1,4 +1,4 @@
-<div class="action-row">
+<div class="flex justify-between items-center">
   <div class="flex justify-start items-center gap-2">
     <lib-view-switcher />
     <form>
@@ -38,7 +38,10 @@
       </div>
     </form>
   </div>
-  <div></div>
+  <div class="flex gap-2">
+    <lib-button (clicked)="addBook()">Add book</lib-button>
+    <lib-button (clicked)="importBooks('xml')">Import XML</lib-button>
+  </div>
 </div>
 <div class="mt-4">
   <router-outlet />
