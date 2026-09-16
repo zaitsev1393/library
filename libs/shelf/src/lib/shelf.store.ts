@@ -75,6 +75,7 @@ export class ShelfStore {
   }
 
   public deleteBook({ id }: Book) {
+    console.log(id);
     if (!id) return;
 
     this.booksService.deleteBook({ id }).subscribe(() => {

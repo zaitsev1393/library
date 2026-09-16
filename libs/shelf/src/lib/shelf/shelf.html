@@ -1,3 +1,12 @@
+@if(isLoading()) {
+<div class="w-full h-64 flex justify-center items-center">
+  <lib-spinner></lib-spinner>
+</div>
+} @if(books().length === 0) {
+<div class="w-full mt-16">
+  <lib-no-books (addBook)="addBook()" (importXML)="onFileSelected($event)" />
+</div>
+} @else {
 <div class="flex justify-between items-center">
   <div class="flex justify-start items-center gap-2">
     <lib-view-switcher />
@@ -53,6 +62,8 @@
     </lib-button>
   </div>
 </div>
+
 <div class="mt-4 mb-16">
   <router-outlet />
 </div>
+}

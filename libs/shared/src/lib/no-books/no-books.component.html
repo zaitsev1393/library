@@ -2,12 +2,21 @@
   <div class="text-xl">Your shelf is empty...</div>
 
   <img
-    class="h-auto max-w-96 rounded-base invert"
+    class="h-auto max-w-64 rounded-base invert"
     src="./assets/empty-shelf.png"
     alt="Empty shelf"
   />
-  <div class="flex gap-2">
-    <lib-button color="brand" (click)="addBook()">Add Book</lib-button>
-    <lib-button color="brand" (click)="exportXML()">Export XML</lib-button>
+  <div class="flex gap-2 mt-4">
+    <lib-button color="brand" (click)="addBook.emit()">Add Book</lib-button>
+    <lib-button>
+      <label for="fileUpload" class="hover:cursor-pointer">Import XML</label>
+      <input
+        id="fileUpload"
+        type="file"
+        class="hidden"
+        [accept]="ACCEPTED_FORMATS"
+        (change)="importXML.emit($event)"
+      />
+    </lib-button>
   </div>
 </div>

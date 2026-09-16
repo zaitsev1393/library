@@ -2,8 +2,11 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgIcon } from '@ng-icons/core';
 import {
+  ACCEPTED_FORMATS,
   ButtonComponent,
   DownloadService,
+  NoBooksComponent,
+  SpinnerComponent,
   XmlParserService,
 } from '@org/shared';
 import { ShelfStore } from '../shelf.store';
@@ -12,14 +15,24 @@ import { ViewSwitcherComponent } from '../view-switcher/view-switcher.component'
 @Component({
   selector: 'lib-shelf',
   templateUrl: './shelf.html',
-  imports: [RouterOutlet, ViewSwitcherComponent, ButtonComponent, NgIcon],
-  providers: [ShelfStore, XmlParserService, DownloadService],
+  imports: [
+    RouterOutlet,
+    ViewSwitcherComponent,
+    ButtonComponent,
+    NgIcon,
+    SpinnerComponent,
+    NoBooksComponent,
+  ],
+  providers: [ShelfStore, XmlParserService, DownloadService, NoBooksComponent],
 })
 export class ShelfComponent {
   public readonly shelfStore = inject(ShelfStore);
   private readonly xmlParserService = inject(XmlParserService);
 
-  public readonly ACCEPTED_FORMATS = '.xml';
+  public readonly books = this.shelfStore.filteredBooks;
+  public isLoading = this.shelfStore.books.isLoading;
+
+  public readonly ACCEPTED_FORMATS = ACCEPTED_FORMATS;
 
   addBook(): void {
     this.shelfStore.addBook();

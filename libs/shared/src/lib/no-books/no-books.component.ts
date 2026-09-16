@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { ButtonComponent } from '../buttons/button/button.component';
+import { ACCEPTED_FORMATS } from '../config/accepted-formats';
 
 @Component({
   selector: 'lib-no-books',
@@ -7,11 +8,8 @@ import { ButtonComponent } from '../buttons/button/button.component';
   imports: [ButtonComponent],
 })
 export class NoBooksComponent {
-  addBook() {
-    console.log('Add Book button clicked');
-  }
+  public addBook = output();
+  public importXML = output<Event>();
 
-  exportXML() {
-    console.log('Export XML button clicked');
-  }
+  public readonly ACCEPTED_FORMATS = ACCEPTED_FORMATS;
 }
