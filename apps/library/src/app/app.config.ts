@@ -10,8 +10,10 @@ import { NgIconsModule } from '@ng-icons/core';
 import {
   heroArrowDownTray,
   heroEllipsisHorizontal,
+  heroPencilSquare,
   heroQueueList,
   heroTableCells,
+  heroTrash,
 } from '@ng-icons/heroicons/outline';
 import { LibErrorHandler } from '@org/shared';
 import { appRoutes } from './app.routes';
@@ -31,6 +33,8 @@ export const appConfig: ApplicationConfig = {
         heroEllipsisHorizontal,
         heroTableCells,
         heroQueueList,
+        heroPencilSquare,
+        heroTrash,
       }),
     ),
   ],

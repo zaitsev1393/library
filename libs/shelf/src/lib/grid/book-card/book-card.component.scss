@@ -3,4 +3,26 @@
 .book-card {
   @apply w-full h-full rounded-sm hover:cursor-pointer duration-200 hover:scale-105;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+
+  .book-card-body {
+    @apply flex flex-col h-full relative;
+    &:hover {
+      .actions {
+        @apply opacity-100;
+      }
+    }
+    .actions {
+      @apply duration-200 absolute right-[10px] top-[10px] not-last:flex-1 flex justify-end items-center gap-2 text-white opacity-0 rounded-sm p-1.5 shadow-sm;
+      background: linear-gradient(
+        70deg,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.25)
+      );
+      ng-icon {
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
 }

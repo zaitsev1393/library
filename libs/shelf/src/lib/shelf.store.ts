@@ -9,13 +9,7 @@ import {
 } from '@org/shared';
 import { LibAddBookComponent } from './manage-book/add-book/add-book.component';
 import { LibEditBookComponent } from './manage-book/edit-book/edit-book.component';
-
-const removeIds = (books: Book[]) =>
-  books.map(({ author, title, pages }) => ({
-    author,
-    title,
-    pages,
-  }));
+import { removeIds } from './utils/remove-ids';
 
 @Injectable()
 export class ShelfStore {

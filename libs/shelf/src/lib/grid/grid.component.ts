@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { Book } from '@data-access';
 import { ShelfStore } from '../shelf.store';
 import { BookCardComponent } from './book-card/book-card.component';
 
@@ -9,5 +10,16 @@ import { BookCardComponent } from './book-card/book-card.component';
   imports: [BookCardComponent],
 })
 export class GridComponent {
-  public books = inject(ShelfStore).filteredBooks;
+  public readonly shelfStore = inject(ShelfStore);
+  public readonly books = this.shelfStore.filteredBooks;
+
+  editBook(book: Book | undefined) {
+    if (!book) return;
+    this.shelfStore.editBook(book);
+  }
+
+  deleteBook(book: Book | undefined) {
+    if (!book) return;
+    this.shelfStore.deleteBook(book);
+  }
 }

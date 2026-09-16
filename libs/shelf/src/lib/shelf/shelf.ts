@@ -1,4 +1,4 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgIcon } from '@ng-icons/core';
 import {
@@ -33,12 +33,6 @@ export class ShelfComponent {
   public isLoading = this.shelfStore.books.isLoading;
 
   public readonly ACCEPTED_FORMATS = ACCEPTED_FORMATS;
-
-  constructor() {
-    effect(() => {
-      console.log(this.books());
-    });
-  }
 
   addBook(): void {
     this.shelfStore.addBook();

@@ -1,5 +1,9 @@
 <div class="grid-container">
-  @for (book of books(); track book.id) {
-    <lib-book-card [book]="book"></lib-book-card>
+  @for (book of books(); track book.title) {
+    <lib-book-card
+      [book]="book"
+      (editBook)="editBook($event)"
+      (deleteBook)="deleteBook($event)"
+    ></lib-book-card>
   }
 </div>
