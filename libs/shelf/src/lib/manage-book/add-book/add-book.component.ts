@@ -1,25 +1,17 @@
-import { DialogRef } from '@angular/cdk/dialog';
-import { Component, inject, viewChild } from '@angular/core';
-import { ButtonComponent } from '@org/shared';
+import { Component, inject } from '@angular/core';
 import { BookData, BookFormComponent } from '../book-form/book-form.component';
 import { AddBookStore } from './add-book.store';
 
 @Component({
   selector: 'lib-add-book',
   templateUrl: `add-book.component.html`,
-  imports: [BookFormComponent, ButtonComponent],
+  imports: [BookFormComponent],
   providers: [AddBookStore],
 })
 export class LibAddBookComponent {
   private readonly addBookStore = inject(AddBookStore);
-  private readonly dialogRef = inject(DialogRef);
-  formComponent = viewChild(BookFormComponent);
 
   public addBook(bookData: BookData) {
     this.addBookStore.createBook(bookData);
-  }
-
-  cancel(): void {
-    this.dialogRef.close(false);
   }
 }
