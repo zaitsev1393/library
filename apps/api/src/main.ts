@@ -9,36 +9,36 @@ import { Book, CreateBook } from './model/book';
 import cors from 'cors';
 
 const db: Book[] = [
-  { id: 1, title: 'The Shining', author: 'Stephen King', pages: 447 },
-  { id: 2, title: 'It', author: 'Stephen King', pages: 1138 },
-  { id: 3, title: 'The Stand', author: 'Stephen King', pages: 823 },
-  {
-    id: 4,
-    title: 'Do Androids Dream of Electric Sheep?',
-    author: 'Philip K. Dick',
-    pages: 210,
-  },
-  {
-    id: 5,
-    title: 'The Man in the High Castle',
-    author: 'Philip K. Dick',
-    pages: 259,
-  },
-  { id: 6, title: 'Ubik', author: 'Philip K. Dick', pages: 224 },
-  { id: 7, title: '1984', author: 'George Orwell', pages: 328 },
-  { id: 8, title: 'Animal Farm', author: 'George Orwell', pages: 112 },
-  { id: 9, title: 'Dune', author: 'Frank Herbert', pages: 412 },
-  { id: 10, title: 'The Hobbit', author: 'J.R.R. Tolkien', pages: 310 },
-  { id: 11, title: 'Brave New World', author: 'Aldous Huxley', pages: 311 },
-  { id: 12, title: 'Fahrenheit 451', author: 'Ray Bradbury', pages: 194 },
-  {
-    id: 13,
-    title: 'The Great Gatsby',
-    author: 'F. Scott Fitzgerald',
-    pages: 180,
-  },
-  { id: 14, title: 'To Kill a Mockingbird', author: 'Harper Lee', pages: 281 },
-  { id: 15, title: 'Pride and Prejudice', author: 'Jane Austen', pages: 279 },
+  // { id: 1, title: 'The Shining', author: 'Stephen King', pages: 447 },
+  // { id: 2, title: 'It', author: 'Stephen King', pages: 1138 },
+  // { id: 3, title: 'The Stand', author: 'Stephen King', pages: 823 },
+  // {
+  //   id: 4,
+  //   title: 'Do Androids Dream of Electric Sheep?',
+  //   author: 'Philip K. Dick',
+  //   pages: 210,
+  // },
+  // {
+  //   id: 5,
+  //   title: 'The Man in the High Castle',
+  //   author: 'Philip K. Dick',
+  //   pages: 259,
+  // },
+  // { id: 6, title: 'Ubik', author: 'Philip K. Dick', pages: 224 },
+  // { id: 7, title: '1984', author: 'George Orwell', pages: 328 },
+  // { id: 8, title: 'Animal Farm', author: 'George Orwell', pages: 112 },
+  // { id: 9, title: 'Dune', author: 'Frank Herbert', pages: 412 },
+  // { id: 10, title: 'The Hobbit', author: 'J.R.R. Tolkien', pages: 310 },
+  // { id: 11, title: 'Brave New World', author: 'Aldous Huxley', pages: 311 },
+  // { id: 12, title: 'Fahrenheit 451', author: 'Ray Bradbury', pages: 194 },
+  // {
+  //   id: 13,
+  //   title: 'The Great Gatsby',
+  //   author: 'F. Scott Fitzgerald',
+  //   pages: 180,
+  // },
+  // { id: 14, title: 'To Kill a Mockingbird', author: 'Harper Lee', pages: 281 },
+  // { id: 15, title: 'Pride and Prejudice', author: 'Jane Austen', pages: 279 },
 ];
 
 const nextId = (els = db) =>
