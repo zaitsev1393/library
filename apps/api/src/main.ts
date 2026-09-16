@@ -176,6 +176,41 @@ app.post('/books', async (req, res) => {
 
 /**
  * @openapi
+ * /books/import:
+ *   post:
+ *     operationId: importBooks
+ *     summary: Import multiple books
+ *     tags: [Books]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: array
+ *             items:
+ *               $ref: '#/components/schemas/CreateBook'
+ *     responses:
+ *       201:
+ *         description: The created books
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Book'
+ */
+app.post('/books/import', async (req, res) => {
+  const books: CreateBook[] = req.body;
+  const createdBooks: Book[] = books.map((input) => {
+    const book: Book = { id: nextId(), ...input };
+    db.push(book);
+    return book;
+  });
+  return res.status(201).json(createdBooks);
+});
+
+/**
+ * @openapi
  * /books/{id}:
  *   delete:
  *     operationId: deleteBook

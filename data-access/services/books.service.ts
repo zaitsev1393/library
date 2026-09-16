@@ -19,6 +19,8 @@ import { getBookById } from '../fn/books/get-book-by-id';
 import { GetBookById$Params } from '../fn/books/get-book-by-id';
 import { getBooks } from '../fn/books/get-books';
 import { GetBooks$Params } from '../fn/books/get-books';
+import { importBooks } from '../fn/books/import-books';
+import { ImportBooks$Params } from '../fn/books/import-books';
 import { updateBook } from '../fn/books/update-book';
 import { UpdateBook$Params } from '../fn/books/update-book';
 
@@ -200,6 +202,41 @@ export class BooksService extends BaseService {
     const resp = this.deleteBook$Response(params, context);
     return resp.pipe(
       map((r: StrictHttpResponse<Book>): Book => r.body)
+    );
+  }
+
+  /** Path part for operation `importBooks()` */
+  static readonly ImportBooksPath = '/books/import';
+
+  /**
+   * Import multiple books.
+   *
+   *
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `importBooks()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  importBooks$Response(params: ImportBooks$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<Book>>> {
+    const obs = importBooks(this.http, this.rootUrl, params, context);
+    return obs;
+  }
+
+  /**
+   * Import multiple books.
+   *
+   *
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `importBooks$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  importBooks(params: ImportBooks$Params, context?: HttpContext): Observable<Array<Book>> {
+    const resp = this.importBooks$Response(params, context);
+    return resp.pipe(
+      map((r: StrictHttpResponse<Array<Book>>): Array<Book> => r.body)
     );
   }
 

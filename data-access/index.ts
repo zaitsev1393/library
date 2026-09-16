@@ -22,3 +22,5 @@ export type { UpdateBook$Params as UpdateBook$Params } from './fn/books/update-b
 export { updateBook as updateBook } from './fn/books/update-book';
 export type { DeleteBook$Params as DeleteBook$Params } from './fn/books/delete-book';
 export { deleteBook as deleteBook } from './fn/books/delete-book';
+export type { ImportBooks$Params as ImportBooks$Params } from './fn/books/import-books';
+export { importBooks as importBooks } from './fn/books/import-books';

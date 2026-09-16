@@ -117,6 +117,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /books/import:
+    post:
+      operationId: importBooks
+      summary: Import multiple books
+      tags:
+        - Books
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateBook'
+      responses:
+        '201':
+          description: The created books
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
 components:
   schemas:
     Book:

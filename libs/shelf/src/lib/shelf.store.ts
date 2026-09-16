@@ -89,6 +89,15 @@ export class ShelfStore {
 
   public addParsedBooks(books: Book[]) {
     this.books.update((currentBooks) => [...(currentBooks || []), ...books]);
+
+    this.booksService.importBooks({ body: books }).subscribe(() => {
+      this.books.reload();
+      this.notificationsService.showNotification({
+        message: 'Books imported successfully',
+        type: 'success',
+      });
+    });
+
     this.notificationsService.showNotification({
       message: 'Books added successfully',
       type: 'success',
