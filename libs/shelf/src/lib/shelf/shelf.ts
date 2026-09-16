@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgIcon } from '@ng-icons/core';
 import {
@@ -29,10 +29,16 @@ export class ShelfComponent {
   public readonly shelfStore = inject(ShelfStore);
   private readonly xmlParserService = inject(XmlParserService);
 
-  public readonly books = this.shelfStore.filteredBooks;
+  public readonly books = this.shelfStore.books.value;
   public isLoading = this.shelfStore.books.isLoading;
 
   public readonly ACCEPTED_FORMATS = ACCEPTED_FORMATS;
+
+  constructor() {
+    effect(() => {
+      console.log(this.books());
+    });
+  }
 
   addBook(): void {
     this.shelfStore.addBook();

@@ -2,7 +2,7 @@
 <div class="w-full h-64 flex justify-center items-center">
   <lib-spinner></lib-spinner>
 </div>
-} @if(books().length === 0) {
+} @if(books()?.length === 0) {
 <div class="w-full mt-16">
   <lib-no-books (addBook)="addBook()" (importXML)="onFileSelected($event)" />
 </div>
