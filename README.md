@@ -1,4 +1,4 @@
-# Nx Angular Repository
+# Library App
 
 <img src="https://www.pngrepo.com/png/74691/512/three-books.png" width="45">
 
@@ -29,3 +29,81 @@ Time spent: ~18 hours. (estimated 20)
 Other:
 
 - express - for the REST API
+
+# Architecture
+
+### High level visual design
+
+Using pencil, camera and Obsidian, I've creatd the initial mockups of the project. Using anything more complicated like Figma would be overkill, but I wanted to have the high level blocks for inspiration and just to offload the image from my head to the screen.
+
+Something went missing from this image and was added later, but generally speaking that was a starting point.
+
+![Mockups](.docs/assets/high-level-design.png)
+
+### General
+
+**Key points:**
+
+- Feature Based Architecture
+- Angular Signals for state management
+- Automated API layer generation
+- Strict relations between all parts of the app
+
+The project is divided into 2 little apps, one is for the small backend and one for the frontend. Although backend was out of the scope in the requirement, I've decided to give it a shot as I thought that would give the project a better shape according to the test nature of the task.
+
+NX gives us the tooling for smart caching and development, also it suggests a opinionated structure with 2 core points: apps and libs / packages.
+
+The core of the project is shown in the screenshot below.
+
+![File structure](.docs/assets/file-structure.png)
+
+**libs** folder only includes the frontend related libs and api app is fully sufficient on its own. In other case, it would make sense to structure it a bit differently to separate the code for the backend and a frontend, but for this project this is enough.
+
+### State management
+
+I decided to leave any state management libs out of the scope for this project, as it didn't make much sense for the size of the project. However, it would be pretty easy to integrate it on the project phase, and considering that I've chose **Angular Signals** as a driver for the state management, NGRX Signals store would be my choice moving forward.
+
+### Modules boundaries
+
+All libs are isolated packages that live under the rules of relations specified in the **eslint** config file. This way we can control the dependencies and avoid circular dependencies.
+
+![Eslint Rules](.docs/assets/eslint-rules.png)
+
+### Structure
+
+The architecture itself is pretty straightforward and NX built in tool "graph" can show us how it look like.
+
+![NX Graph](.docs/assets/nx-graph.png)
+
+Libs are basically features. They **expose their own APIs** for other features to work with, if needed. It should have at least 1 exposed export, otherwise it makes no sense as it is never used by anything.
+
+# Roadmap and progression
+
+I've kept all my progress going in the trello board. Partially to show you my day to day, work process, and partially to keep the plan and steps in the reliable storage.
+
+Here you can see my progress. I've kept the documentation in the very short format just to save time, but here you also can see what would be my next steps if I (or anyone after me) would keep working working on the project.
+
+[Trello Board](https://trello.com/invite/b/6aa7baef9367f49db846e46e/ATTId688a8f4dda9b8995fc5d53fb617c0749736E09F/fulcrum-library)
+
+This is how I usually document my dev work:
+
+![Git history](.docs/assets/git-hist.png)
+
+### What is left out of question and why
+
+Some things were either skipped or just left out of work, mostly due to the lack of time. More precisely, what was omitted:
+
+1. Fuller tests coverage. Unit, integration and e2e tests for the frontend part of the app.
+2. CI/CD and github connection - next thing would be creating an automated pipeline to deploy the app to the staging and prod environment
+3. Authentication - this one looks pretty obvious and even presented in the Trello's backlog
+4. Pagination - pretty much the same as #3.
+5. UI/UX improvement - in broad terms, the improvements of the feelings you get while working with the app.
+6. Localization
+
+# How to run
+
+```
+git clone git@github.com:zaitsev1393/library.git
+npm install
+npm run dev
+```
