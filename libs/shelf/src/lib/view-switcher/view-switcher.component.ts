@@ -9,18 +9,7 @@ export enum ViewType {
 
 @Component({
   selector: 'lib-view-switcher',
-  template: `
-    <div class="flex gap-1">
-      <lib-icon-button
-        name="heroQueueList"
-        (click)="switchView(ViewType.List)"
-      />
-      <lib-icon-button
-        name="heroTableCells"
-        (click)="switchView(ViewType.Grid)"
-      />
-    </div>
-  `,
+  templateUrl: './view-switcher.component.html',
   imports: [IconButtonComponent],
 })
 export class ViewSwitcherComponent {
@@ -28,7 +17,6 @@ export class ViewSwitcherComponent {
   public readonly ViewType = ViewType;
 
   public switchView(viewType: ViewType): void {
-    console.log(`Switching to ${viewType} view`);
     this.router.navigate(['library', viewType], {
       queryParamsHandling: 'merge',
     });

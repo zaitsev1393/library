@@ -141,3 +141,8 @@
     </table>
   </div>
 </div>
+@if (filteredBooks().length === 0) {
+  <div class="w-full mt-16 text-center flex justify-center">
+    <p>No books found, try clearing your search.</p>
+  </div>
+}
