@@ -1,6 +1,6 @@
 <div
   id="toast-success"
-  class="flex items-center w-full max-w-lg p-4 text-body bg-neutral-primary-soft rounded-base shadow-xs border border-default"
+  class="flex items-center w-full max-w-lg p-4 text-body bg-neutral-primary-soft rounded-base shadow-xs border border-default slide-in"
   role="alert"
 >
   @switch (type()) {
@@ -81,7 +81,7 @@
   <div class="ms-3 text-sm font-normal">{{ message() }}</div>
   <button
     type="button"
-    class="ml-2 ms-auto flex items-center justify-center text-body hover:text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded text-sm h-8 w-8 focus:outline-none"
+    class="hover:cursor-pointer ml-2 ms-auto flex items-center justify-center text-body hover:text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded text-sm h-8 w-8 focus:outline-none"
     data-dismiss-target="#toast-success"
     aria-label="Close"
     (click)="close()"

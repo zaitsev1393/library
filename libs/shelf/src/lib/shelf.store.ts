@@ -97,11 +97,6 @@ export class ShelfStore {
         type: 'success',
       });
     });
-
-    this.notificationsService.showNotification({
-      message: 'Books added successfully',
-      type: 'success',
-    });
   }
 
   public downloadLibrary() {

@@ -4,6 +4,7 @@ import { Component, inject, signal } from '@angular/core';
 @Component({
   selector: 'lib-notification',
   templateUrl: './notification.component.html',
+  styleUrls: ['./notification.component.scss'],
 })
 export class NotificationComponent {
   private readonly dialogRef = inject(DialogRef);
