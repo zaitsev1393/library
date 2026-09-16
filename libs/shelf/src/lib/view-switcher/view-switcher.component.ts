@@ -13,11 +13,11 @@ export enum ViewType {
     <div class="flex gap-1">
       <lib-icon-button
         name="heroQueueList"
-        (click)="switchView(ViewType.Grid)"
+        (click)="switchView(ViewType.List)"
       />
       <lib-icon-button
         name="heroTableCells"
-        (click)="switchView(ViewType.List)"
+        (click)="switchView(ViewType.Grid)"
       />
     </div>
   `,

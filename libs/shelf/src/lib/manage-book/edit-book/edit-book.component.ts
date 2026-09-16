@@ -17,9 +17,7 @@ export class LibEditBookComponent {
 
   public book = this.DIALOG_DATA.book as BookData;
 
-  public editBook(data: BookData | undefined) {
-    if (!data) return;
-
+  public editBook(data: BookData) {
     this.editBookStore.editBook(data);
   }
 

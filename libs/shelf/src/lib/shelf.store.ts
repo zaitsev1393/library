@@ -37,7 +37,7 @@ export class ShelfStore {
   public filteredBooks = computed<Book[]>(() => {
     return (this.books.value() || []).filter((book) => {
       const search = this.search();
-      return book.title.includes(search);
+      return book.title.toString().includes(search);
     });
   });
 

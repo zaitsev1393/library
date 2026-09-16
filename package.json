@@ -6,6 +6,7 @@
     "dev": "npx nx serve library",
     "build": "npx nx run-many -t build test lint",
     "prepare": "husky",
+    "test": "npx nx run-many -t test",
     "generate-api": "node ./scripts/generate-openapi-yaml.js && npx ng-openapi-gen -c ./config/ng-openapi-gen.json"
   },
   "private": true,

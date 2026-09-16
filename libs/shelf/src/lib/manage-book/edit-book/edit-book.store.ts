@@ -11,13 +11,18 @@ export class EditBookStore {
   private readonly shelfStore = inject(ShelfStore);
 
   public editBook({ id, title, author, pages }: BookData) {
+    if (!id) {
+      throw new Error('Book ID is required for editing.');
+    }
+
     const body: Book = {
       id,
       title,
       author,
       pages,
     };
-    this.booksService.updateBook({ id: id as number, body }).subscribe(() => {
+
+    this.booksService.updateBook({ id, body }).subscribe(() => {
       this.dialogRef.close(true);
       this.shelfStore.books.reload();
     });

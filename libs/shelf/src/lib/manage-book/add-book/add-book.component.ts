@@ -15,11 +15,8 @@ export class LibAddBookComponent {
   private readonly dialogRef = inject(DialogRef);
   formComponent = viewChild(BookFormComponent);
 
-  public addBook(book: BookData | undefined) {
-    this.formComponent()?.bookForm().markAsTouched();
-    if (!book) return;
-
-    this.addBookStore.createBook(book);
+  public addBook(bookData: BookData) {
+    this.addBookStore.createBook(bookData);
   }
 
   cancel(): void {
