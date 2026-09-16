@@ -2,7 +2,7 @@
 
 <img src="https://www.pngrepo.com/png/74691/512/three-books.png" width="45">
 
-![Library](docs/assets/library-screen.png)
+![Library](.docs/assets/library-screen.png)
 
 # Description
 
